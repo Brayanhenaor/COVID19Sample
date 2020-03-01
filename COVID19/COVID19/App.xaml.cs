@@ -4,6 +4,7 @@ using COVID19.ViewModels;
 using COVID19.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using COVID19.Services;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace COVID19
@@ -24,12 +25,18 @@ namespace COVID19
             InitializeComponent();
 
             await NavigationService.NavigateAsync("NavigationPage/MainPage");
+            ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#212121");
+            ((NavigationPage)Application.Current.MainPage).BarTextColor = Color.FromHex("#fafafa");
+            ((NavigationPage)Application.Current.MainPage).BackgroundColor = Color.FromHex("#424242");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+            containerRegistry.RegisterForNavigation<DetailPage, DetailPageViewModel>();
+
+            containerRegistry.RegisterSingleton<ApiService>();
         }
     }
 }

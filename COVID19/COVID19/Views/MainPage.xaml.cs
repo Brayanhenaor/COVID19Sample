@@ -12,6 +12,7 @@ namespace COVID19.Views
         public MainPage()
         {
             InitializeComponent();
+            NavigationPage.SetBackButtonTitle(this, string.Empty);
         }
     }
 }

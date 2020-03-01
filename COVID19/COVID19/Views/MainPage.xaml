@@ -2,10 +2,86 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="COVID19.Views.MainPage"
+             xmlns:panc="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              Title="{Binding Title}">
 
-    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-        <Label Text="Welcome to Xamarin Forms and Prism!" />
-    </StackLayout>
+    <ScrollView
+        Padding="10">
 
+        <StackLayout>
+            <lottie:AnimationView
+                IsVisible="{Binding IsLoading}"
+                Animation="loader.json"
+                Loop="True"
+                HeightRequest="300"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand"
+                AutoPlay="True"/>
+
+            <ListView
+                IsVisible="{Binding IsLoading, Converter={StaticResource BoolConverter}}"
+                ItemsSource="{Binding Countries}"
+                HasUnevenRows="True"
+                SelectedItem="{Binding SelectedCountry}"
+                BackgroundColor="Transparent"
+                SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <panc:PancakeView
+                                    Margin="7"
+                                    HasShadow="False"
+                                    Padding="10"
+                                    BackgroundColor="#212121"
+                                    CornerRadius="60,00,10,60"
+                                    IsClippedToBounds="true"
+                                    HeightRequest="80"
+                                    HorizontalOptions="FillAndExpand">
+                                    <StackLayout
+                                        Orientation="Horizontal">
+
+                                        <StackLayout
+                                            HorizontalOptions="CenterAndExpand"
+                                            Margin="20,10">
+                                            <Label
+                                                HorizontalOptions="CenterAndExpand"
+                                                FontSize="20"
+                                                FontAttributes="Bold"
+                                                VerticalOptions="Center"
+                                                HorizontalTextAlignment="Center"
+                                                TextColor="#fafafa"
+                                                Text="{Binding CountryName}"/>
+                                            <StackLayout
+                                                Orientation="Horizontal">
+
+                                                <Label
+                                                    HorizontalOptions="CenterAndExpand"
+                                                    FontSize="23"
+                                                    VerticalOptions="Center"
+                                                    HorizontalTextAlignment="Center"
+                                                    TextColor="#29b6f6"
+                                                    Text="{Binding DataCountry.Confirmed}"/>
+
+                                               
+                                            </StackLayout>
+
+
+                                        </StackLayout>
+
+                                        <Image
+                                            HorizontalOptions="EndAndExpand"
+                                            Source="NextIcon"/>
+                                    </StackLayout>
+
+                                </panc:PancakeView>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ScrollView>
+    
 </ContentPage>

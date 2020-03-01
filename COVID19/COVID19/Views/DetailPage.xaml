@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="{Binding Title}"
+    x:Class="COVID19.Views.DetailPage">
+    <ContentPage.Content>
+        <Grid
+            RowSpacing="10"
+            BindingContext="{Binding Country}"
+            HorizontalOptions="CenterAndExpand"
+            VerticalOptions="CenterAndExpand"
+            Margin="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Label
+                HorizontalOptions="CenterAndExpand"
+                FontSize="20"
+                VerticalOptions="Center"
+                HorizontalTextAlignment="Center"
+                TextColor="#212121"
+                Text="Confirmed"/>
+
+            <Label
+                Grid.Row="1"
+                HorizontalOptions="CenterAndExpand"
+                FontSize="30"
+                FontAttributes="Bold"
+                VerticalOptions="Center"
+                HorizontalTextAlignment="Center"
+                TextColor="#212121"
+                Text="{Binding DataCountry.Confirmed}"/>
+
+            <Label
+                Grid.Column="1"
+                HorizontalOptions="CenterAndExpand"
+                FontSize="20"
+                VerticalOptions="Center"
+                HorizontalTextAlignment="Center"
+                TextColor="#212121"
+                Text="Deaths"/>
+
+            <Label
+                Grid.Column="1"
+                Grid.Row="1"
+                HorizontalOptions="CenterAndExpand"
+                FontSize="30"
+                FontAttributes="Bold"
+                VerticalOptions="Center"
+                HorizontalTextAlignment="Center"
+                TextColor="#b71c1c"
+                Text="{Binding DataCountry.Deaths}"/>
+
+            <Label
+                Grid.Column="2"
+                HorizontalOptions="CenterAndExpand"
+                FontSize="20"
+                VerticalOptions="Center"
+                HorizontalTextAlignment="Center"
+                TextColor="#212121"
+                Text="Recovered"/>
+
+            <Label
+                Grid.Column="2"
+                Grid.Row="1"
+                HorizontalOptions="CenterAndExpand"
+                FontSize="30"
+                FontAttributes="Bold"
+                VerticalOptions="Center"
+                HorizontalTextAlignment="Center"
+                TextColor="#8bc34a"
+                Text="{Binding DataCountry.Recovered}"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

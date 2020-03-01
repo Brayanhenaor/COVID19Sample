@@ -1,6 +1,7 @@
 ﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using Lottie.Forms.Droid;
 using Prism;
 using Prism.Ioc;
 
@@ -17,6 +18,7 @@ namespace COVID19.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            AnimationViewRenderer.Init();
             LoadApplication(new App(new AndroidInitializer()));
         }
     }
