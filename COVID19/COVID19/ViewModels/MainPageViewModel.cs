@@ -5,6 +5,7 @@
     using COVID19.Services;
     using Prism.Navigation;
     using System.Collections.ObjectModel;
+    using System.Linq;
     using System.Threading.Tasks;
 
     public class MainPageViewModel : ViewModelBase
@@ -73,6 +74,7 @@
                         Countries.Add(new Countries { CountryName = q.Key.Replace("_"," "), DataCountry = q.Value });
                     }
                 }
+                Countries = new ObservableCollection<Countries>(Countries.OrderByDescending(x => x.DataCountry.Confirmed));
                 await Task.Delay(2000);
                 IsLoading =!IsLoading;
             }
