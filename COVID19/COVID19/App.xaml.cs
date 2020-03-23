@@ -27,7 +27,7 @@ namespace COVID19
             await NavigationService.NavigateAsync("NavigationPage/MainPage");
             ((NavigationPage)Application.Current.MainPage).BarBackgroundColor = Color.FromHex("#FFB300");
             ((NavigationPage)Application.Current.MainPage).BarTextColor = Color.FromHex("#fafafa");
-            ((NavigationPage)Application.Current.MainPage).BackgroundColor = Color.FromHex("#424242");
+            ((NavigationPage)Application.Current.MainPage).BackgroundColor = Color.White;
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
